@@ -8,10 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        "lm-green": "#008D53",
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "g-to-wine": "linear-gradient(56.8deg, #000000 39.67%, #41013B 137.58%)",
+        "g-to-green": "linear-gradient(56.8deg, #000000 39.67%, #142D22 137.58%)",
+      },
+      maxWidth: {
+        "container-1140": "1140px",
       },
     },
   },

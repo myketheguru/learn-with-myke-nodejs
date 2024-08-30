@@ -48,7 +48,7 @@ const CourseCurriculum = () => {
         height={1000}
         src='/ellipse-19.svg'
         alt='ellipse'
-        className='absolute pointer-events-none -z-[1px] -top-[650px] -translate-x-1/2 left-[55%]'
+        className='absolute pointer-events-none -z-[1] -top-[650px] -translate-x-1/2 left-[55%]'
       />
 
       <h4 className='text-[50px] text-center font-black font-inter mb-[30px]'>

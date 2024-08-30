@@ -23,3 +23,10 @@ body {
 .font-inter {
   font-family: var(--font-inter);
 }
+
+.gradient-text {
+  background: linear-gradient(94.8deg, #12b669 40.38%, #ff4d00 93.29%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

@@ -1,6 +1,7 @@
 import CourseCurriculum from "@/components/course-curriculum";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
+import MeetMyke from "@/components/meet-myke";
 
 const Home = () => {
   return (
@@ -11,6 +12,8 @@ const Home = () => {
         <Hero />
 
         <CourseCurriculum />
+
+        <MeetMyke />
       </div>
     </div>
   );

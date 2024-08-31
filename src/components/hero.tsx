@@ -39,11 +39,13 @@ const Hero = () => {
             applications!
           </p>
 
-          <div className='mb-3 w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
+          <button
+            type='button'
+            className='mb-3 w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
             <p>Start learning now</p>
 
             <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>₦250,000</p>
-          </div>
+          </button>
 
           <p className='text-xs'>
             <span className='opacity-50'>Make Monthly payment at </span>

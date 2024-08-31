@@ -49,7 +49,15 @@ const MeetMyke = () => {
         height={1000}
         src='/ellipse-23.svg'
         alt='ellipse'
-        className='absolute pointer-events-none -z-[1] -top-[226px] -left-[324px]'
+        className='absolute pointer-events-none -z-[1] -top-[226px] -left-[350px]'
+      />
+
+      <Image
+        width={1000}
+        height={1000}
+        src='/ellipse-22.svg'
+        alt='ellipse'
+        className='absolute pointer-events-none -z-[1] -top-[226px] -right-[300px]'
       />
     </div>
   );

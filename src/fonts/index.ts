@@ -1,4 +1,4 @@
-import { Inter, Poppins, Outfit } from "next/font/google";
+import { Inter, Poppins, Outfit, DM_Sans } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -9,5 +9,6 @@ const poppins = Poppins({
 });
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dmSans" });
 
-export { inter, poppins, outfit };
+export { inter, poppins, outfit, dmSans };

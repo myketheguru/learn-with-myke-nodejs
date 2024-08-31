@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { inter, poppins } from "@/fonts";
+import { inter, poppins, outfit, dmSans } from "@/fonts";
 
-import "./globals.css";
+import "./globals.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${inter.variable} ${poppins.variable}`}>{children}</body>
+      <body
+        className={`${inter.variable} ${poppins.variable} ${outfit.variable} ${dmSans.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

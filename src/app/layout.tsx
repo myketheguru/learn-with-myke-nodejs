@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { inter, poppins, outfit, dmSans } from "@/fonts";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import "./globals.scss";
 
@@ -17,7 +18,9 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={`${inter.variable} ${poppins.variable} ${outfit.variable} ${dmSans.variable}`}>
-        {children}
+        <GoogleOAuthProvider clientId='YOUR_GOOGLE_CLIENT_ID'>
+          {children}
+        </GoogleOAuthProvider>
       </body>
     </html>
   );

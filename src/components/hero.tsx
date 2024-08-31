@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import KeenSlider, { type KeenSliderInstance } from "keen-slider";
 import "keen-slider/keen-slider.min.css";
+import Link from "next/link";
 
 const Hero = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
@@ -39,13 +40,13 @@ const Hero = () => {
             applications!
           </p>
 
-          <button
-            type='button'
+          <Link
+            href='/start-learning'
             className='mb-3 w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
             <p>Start learning now</p>
 
             <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>₦250,000</p>
-          </button>
+          </Link>
 
           <p className='text-xs'>
             <span className='opacity-50'>Make Monthly payment at </span>

@@ -7,13 +7,13 @@ const Header = () => {
     <nav className='w-full px-[70px]'>
       <div className='relative max-w-screen-xl mx-auto w-full py-[28px] flex justify-between items-center'>
         <div className='flex gap-x-[112px] justify-between'>
-          <div className='flex gap-x-[14px] items-center'>
+          <Link href='/' className='flex gap-x-[14px] items-center'>
             <div className='w-[50px] h-[50px] rounded-full grid place-items-center bg-lm-green text-white font-inter font-bold'>
               LM
             </div>
 
             <div className='text-white font-semibold'>LearnWithMyke</div>
-          </div>
+          </Link>
 
           <ul className='flex items-center gap-x-[73px]'>
             <li>

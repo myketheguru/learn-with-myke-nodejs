@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const StartLearning = () => {
   return (
@@ -19,13 +20,13 @@ const StartLearning = () => {
           Pay in full: ₦250,000 for 2 months or Pay in installments ₦150,000 per month
         </p>
 
-        <button
-          type='button'
+        <Link
+          href='/start-learning'
           className='w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
           <p>Start learning now</p>
 
           <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>₦250,000</p>
-        </button>
+        </Link>
 
         <Image
           width={1081}

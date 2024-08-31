@@ -45,10 +45,13 @@ body {
   .lmb-card {
     @apply max-w-[330px] h-[290px] flex flex-col justify-end px-9 py-6 rounded-[20px] relative;
 
-    &_line-left::before {
-      @apply absolute w-[1px] h-[223px] left-0 top-8 bg-opacity-5 bg-white;
-      content: "";
-      background: linear-gradient(180deg, #12b669 0%, #08502e 100%);
+    &_line-left {
+      @apply bg-[rgba(255,255,255,0.05)];
+      ::before {
+        @apply absolute w-[1px] h-[223px] left-0 top-8;
+        content: "";
+        background: linear-gradient(180deg, #12b669 0%, #08502e 100%);
+      }
     }
 
     &_line-bottom {

@@ -137,6 +137,14 @@ const Faq = () => {
           </p>
         </div>
       </div>
+
+      <Image
+        width={1500}
+        height={1500}
+        src='/ellipse-38.svg'
+        alt='ellipse'
+        className='absolute pointer-events-none -z-[1] -top-[100px] -right-[250px]'
+      />
     </div>
   );
 };

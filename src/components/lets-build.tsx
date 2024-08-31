@@ -130,6 +130,22 @@ const LetsBuild = () => {
       </div>
 
       <Image
+        width={164}
+        height={145}
+        src='/super-toroid.svg'
+        alt='Illustration'
+        className='absolute pointer-events-none -z-[1] top-7 -left-[45px]'
+      />
+
+      <Image
+        width={1500}
+        height={1500}
+        src='/ellipse-24.svg'
+        alt='ellipse'
+        className='absolute pointer-events-none -z-[1] -top-[500px] -left-[574px]'
+      />
+
+      <Image
         width={1000}
         height={2}
         src='/bottom-line.svg'

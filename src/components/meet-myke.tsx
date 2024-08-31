@@ -45,6 +45,14 @@ const MeetMyke = () => {
       </div>
 
       <Image
+        width={145}
+        height={145}
+        src='/cube.svg'
+        alt='Illustration'
+        className='absolute pointer-events-none -z-[1] top-[80px] -right-[178px]'
+      />
+
+      <Image
         width={1000}
         height={1000}
         src='/ellipse-23.svg'
@@ -53,11 +61,11 @@ const MeetMyke = () => {
       />
 
       <Image
-        width={1000}
-        height={1000}
+        width={1500}
+        height={1500}
         src='/ellipse-22.svg'
         alt='ellipse'
-        className='absolute pointer-events-none -z-[1] -top-[226px] -right-[300px]'
+        className='absolute pointer-events-none -z-[1] -top-[270px] -right-[370px]'
       />
     </div>
   );

@@ -5,7 +5,7 @@ import Link from "next/link";
 const Header = () => {
   return (
     <nav className='w-full px-[70px]'>
-      <div className='max-w-screen-xl mx-auto w-full py-[28px] flex justify-between items-center'>
+      <div className='relative max-w-screen-xl mx-auto w-full py-[28px] flex justify-between items-center'>
         <div className='flex gap-x-[112px] justify-between'>
           <div className='flex gap-x-[14px] items-center'>
             <div className='w-[50px] h-[50px] rounded-full grid place-items-center bg-lm-green text-white font-inter font-bold'>
@@ -45,6 +45,14 @@ const Header = () => {
             <Image src='/linkedin.svg' width={20} height={20} alt='Linkedin' />
           </Link>
         </div>
+
+        <Image
+          width={164}
+          height={145}
+          src='/super-toroid.svg'
+          alt='Illustration'
+          className='absolute pointer-events-none -z-[1] -top-[48px] right-[254px]'
+        />
       </div>
     </nav>
   );

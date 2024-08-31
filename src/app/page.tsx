@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import CourseCurriculum from "@/components/course-curriculum";
 import Faq from "@/components/faq";
 import Footer from "@/components/footer";
@@ -10,7 +12,7 @@ import StartLearning from "@/components/start-learning";
 const Home = () => {
   return (
     <>
-      <div className='bg-[url(/hero-lines.svg)] bg-[center_0] bg-no-repeat bg-cover w-full h-screen'>
+      <div className='relative bg-[url(/hero-lines.svg)] bg-[center_0] bg-no-repeat bg-cover w-full h-screen'>
         <Header />
 
         <Hero />

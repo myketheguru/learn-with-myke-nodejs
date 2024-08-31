@@ -28,7 +28,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className='container max-w-container-1140 flex justify-between mx-auto mt-32'>
+      <div className='relative container max-w-container-1140 flex justify-between mx-auto mt-32'>
         <div className='max-w-[620px]'>
           <h3 className='font-inter font-black text-[80px] leading-[96.82px] mb-3'>
             Master Node.js and JavaScript
@@ -76,6 +76,22 @@ const Hero = () => {
             </li>
           </ol>
         </div>
+
+        <Image
+          width={145}
+          height={145}
+          src='/sphere.svg'
+          alt='Illustration'
+          className='absolute pointer-events-none -z-[1] bottom-0 -left-[218px]'
+        />
+
+        <Image
+          width={145}
+          height={145}
+          src='/cube.svg'
+          alt='Illustration'
+          className='absolute pointer-events-none -z-[1] -bottom-[50px] -right-[178px]'
+        />
       </div>
 
       <div className='container max-w-container-1140 mx-auto mt-32 relative h-[276px]'>

@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #131313;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: var(--bg-color);
+  font-family: var(--font-poppins);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-dmSans {
+  font-family: var(--font-dmSans);
+}
+
+.gradient-text {
+  background: linear-gradient(94.8deg, #12b669 40.38%, #ff4d00 93.29%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.custom-checkbox:checked + label span.check {
+  @apply bg-[#0fa961] border-[#0fa961];
+  background-image: url("data:image/svg+xml,%3Csvg fill='none' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.1458 5.50394C19.5316 5.88842 19.5337 6.517 19.1492 6.90279L10.0286 16.0233C9.63809 16.4138 9.00565 16.4138 8.61518 16.0233L4.86074 12.2689C4.47625 11.8844 4.47833 11.2558 4.86412 10.8703C5.2499 10.4845 5.87848 10.4824 6.26397 10.8672L9.32186 13.9251L17.7468 5.50015C18.1313 5.11436 18.7599 5.11645 19.1458 5.50394Z' fill='white'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@layer components {
+  .lmb-card {
+    @apply max-w-[330px] h-[290px] flex flex-col justify-end px-9 py-6 rounded-[20px] relative;
+
+    &_line-left {
+      @apply bg-[rgba(255,255,255,0.05)];
+      ::before {
+        @apply absolute w-[1px] h-[223px] left-0 top-8;
+        content: "";
+        background: linear-gradient(180deg, #12b669 0%, #08502e 100%);
+      }
+    }
+
+    &_line-bottom {
+      @apply border border-[#18231E];
+
+      ::before {
+        @apply absolute h-[1px] w-[223px] bottom-0 left-1/2 bg-opacity-10 bg-black;
+        content: "";
+        background: linear-gradient(180deg, #12b669 0%, #08502e 100%);
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+      }
+    }
+
+    &_gradient {
+      border: 0.3px solid rgba(255, 255, 255, 0.3);
+      background: linear-gradient(43.53deg, #000000 -35.54%, #142d22 66.19%);
+    }
+  }
+}

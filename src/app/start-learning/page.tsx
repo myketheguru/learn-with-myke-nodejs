@@ -4,13 +4,40 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useGoogleLogin } from "@react-oauth/google";
 import * as Dialog from "@radix-ui/react-dialog";
+import { usePaystackPayment } from "react-paystack";
 
 import Header from "@/components/header";
+
+const config = {
+  reference: new Date().getTime().toString(),
+  email: "juliusogunleye@gmail.com",
+  amount: 250000 * 100,
+  publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string,
+};
 
 const StartLearning = () => {
   const [open, setOpen] = useState(true);
   const [showCouponInput, setShowCouponInput] = useState(false);
   const [couponApplied, setCouponApplied] = useState(false);
+
+  const initializePayment = usePaystackPayment(config);
+
+  const onSuccess = (reference: string) => {
+    // Implementation for whatever you want to do with reference and after success call.
+    console.log(reference);
+  };
+
+  const onClose = () => {
+    // implementation for  whatever you want to do when the Paystack dialog closed.
+    console.log("closed");
+  };
+
+  const makePayment = () => {
+    initializePayment({
+      onSuccess,
+      onClose,
+    });
+  };
 
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => {
@@ -152,6 +179,7 @@ const StartLearning = () => {
 
                 <button
                   type='button'
+                  onClick={makePayment}
                   className='mb-3 w-full mt-[43px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
                   <p>Make Payment</p>
 

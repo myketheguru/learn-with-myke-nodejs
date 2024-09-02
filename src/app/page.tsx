@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import CourseCurriculum from "@/components/course-curriculum";
 import Faq from "@/components/faq";
 import Footer from "@/components/footer";

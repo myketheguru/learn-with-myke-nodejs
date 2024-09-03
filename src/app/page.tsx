@@ -10,7 +10,7 @@ import StartLearning from "@/components/start-learning";
 const Home = () => {
   return (
     <>
-      <div className='relative bg-[url(/hero-lines.svg)] bg-[center_0] bg-no-repeat bg-cover w-full h-screen'>
+      <div className='relative bg-[url(/hero-lines.svg)] bg-[center_0] bg-no-repeat bg-cover w-full min-h-screen'>
         <Header />
 
         <Hero />

@@ -76,16 +76,6 @@ const Faq = () => {
         </div>
         <div>
           <h5 className='text-2xl font-medium mb-2'>
-            Can I get a free trial test for the lessons?
-          </h5>
-          <p className='opacity-50 text-sm'>
-            Absolutely! Our platform includes quizzes and practical exercises at the end
-            of each module to help reinforce your learning. These tests allow you to apply
-            what you&apos;ve learned and track your progress throughout the course.
-          </p>
-        </div>
-        <div>
-          <h5 className='text-2xl font-medium mb-2'>
             What kind of job opportunities are available for Node.js developers?
           </h5>
           <p className='opacity-50 text-sm'>
@@ -103,39 +93,6 @@ const Faq = () => {
           alt='Illustration'
           className='absolute bottom-0 pointer-events-none w-full'
         />
-      </div>
-
-      <div className='grid grid-cols-3 w-full gap-x-16 relative pt-10 pb-5'>
-        <div>
-          <h5 className='text-2xl font-medium mb-2'>
-            What are the prerequisites for this course?
-          </h5>
-          <p className='opacity-50 text-sm'>
-            Basic knowledge of JavaScript is recommended. Familiarity with asynchronous
-            programming concepts and an understanding of how web servers work will be
-            beneficial.
-          </p>
-        </div>
-        <div>
-          <h5 className='text-2xl font-medium mb-2'>
-            Do I need prior knowledge of JavaScript to learn Node.js?
-          </h5>
-          <p className='opacity-50 text-sm'>
-            Yes, having a basic understanding of JavaScript is essential before diving
-            into Node.js. Node.js is built on JavaScript, so familiarity with its syntax
-            and core concepts will help you grasp Node.js more effectively.
-          </p>
-        </div>
-        <div>
-          <h5 className='text-2xl font-medium mb-2'>
-            What kind of projects will I be able to build with Node.js?
-          </h5>
-          <p className='opacity-50 text-sm'>
-            With Node.js, you can build a wide range of applications, including web
-            servers, RESTful APIs, real-time chat applications, command-line tools, and
-            microservices.
-          </p>
-        </div>
       </div>
 
       <Image

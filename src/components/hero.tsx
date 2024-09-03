@@ -32,7 +32,7 @@ const Hero = () => {
       <div className='relative container max-w-container-1140 flex justify-between mx-auto mt-32'>
         <div className='max-w-[620px]'>
           <h3 className='font-inter font-black text-[80px] leading-[96.82px] mb-3'>
-            Master Node.js and JavaScript
+            Master Node.js in 11 Weeks
           </h3>
           <p className='max-w-[484px] opacity-50 mb-6'>
             Unlock your potential as a Node.js and JavaScript developer with our dynamic
@@ -43,37 +43,37 @@ const Hero = () => {
           <Link
             href='/start-learning'
             className='mb-3 w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
-            <p>Start learning now</p>
+            <p>Join Online Class</p>
 
             <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>₦250,000</p>
           </Link>
 
-          <p className='text-xs'>
+          {/* <p className='text-xs'>
             <span className='opacity-50'>Make Monthly payment at </span>
             <span className='!opacity-100 underline'>
               <span className='font-bold'>₦150,000</span> per month{" "}
             </span>
-          </p>
+          </p> */}
         </div>
 
         <div>
-          <p className='text-xl mb-4'>WHAT TO GET</p>
+          <p className='text-xl mb-4'>WHAT YOU GET</p>
 
           <ol className='opacity-50 text-sm'>
             <li className='py-3 border-b-[0.5px] border-[rgba(255,255,255, 0.5)]'>
-              01. Free Videos
+              01. Deep dive into Node.js
             </li>
             <li className='py-3 border-b-[0.5px] border-[rgba(255,255,255, 0.5)]'>
-              02. Installation and setup
+              02. Build Practical Applications
             </li>
             <li className='py-3 border-b-[0.5px] border-[rgba(255,255,255, 0.5)]'>
-              03. Event-driven architecture
+              03. Best practices and optimizations
             </li>
             <li className='py-3 border-b-[0.5px] border-[rgba(255,255,255, 0.5)]'>
-              04. Node.js REPL
+              04. Hands-on experience
             </li>
             <li className='py-3 border-b-[0.5px] border-[rgba(255,255,255, 0.5)]'>
-              05. Node.js REPL
+              05. Networking and community
             </li>
           </ol>
         </div>

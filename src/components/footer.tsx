@@ -11,15 +11,23 @@ const Footer = () => {
             Learnwithmyke
           </h5>
           <p className='text-sm opacity-50'>
-            Lorem ipsum dolor sit amet consectetur. Risus nunc eget aliquet posuere. Massa
-            praesent sit placerat Lorem ipsum dolor sit amet consectetur. Risus nunc eget
+            An educational platform focused on teaching technical topics. It provides a
+            structured and interactive learning experience, guiding students through the
+            course with support from instructors and peers. The platform is designed to
+            facilitate student engagement and track their progress throughout the duration
+            of the course.
           </p>
         </div>
 
         <div className='w-[360px] rounded-[30px] p-8 border  flex items-center border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
           <p className='text-sm opacity-50'>
-            © 2024 Theguru technology Ltd. for more information about us, reach out to us
-            at <span className='text-[#00FF87]'>hello@learnwithmyke.com</span>
+            © {new Date().getFullYear()} WithMyke. For more information about us, reach
+            out to us at{" "}
+            <a
+              href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
+              className='text-[#00FF87]'>
+              {process.env.NEXT_PUBLIC_CONTACT_EMAIL}
+            </a>
           </p>
         </div>
       </div>
@@ -32,7 +40,7 @@ const Footer = () => {
 
           <ul className='flex flex-col gap-y-[26px]'>
             <li>
-              <Link className='text-lg' href='/#'>
+              <Link className='text-lg' href='/'>
                 Home
               </Link>
             </li>
@@ -42,7 +50,9 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link className='text-lg' href='/#'>
+              <Link
+                className='text-lg'
+                href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
                 Contact us
               </Link>
             </li>

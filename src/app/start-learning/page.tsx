@@ -8,11 +8,8 @@ import { usePaystackPayment } from "react-paystack";
 
 import Header from "@/components/header";
 
-const config = {
-  reference: new Date().getTime().toString(),
-  email: "juliusogunleye@gmail.com",
-  amount: 250000 * 100,
-  publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string,
+type SuccessResponse = {
+  reference: string;
 };
 
 const StartLearning = () => {
@@ -20,23 +17,30 @@ const StartLearning = () => {
   const [showCouponInput, setShowCouponInput] = useState(false);
   const [couponApplied, setCouponApplied] = useState(false);
 
-  const initializePayment = usePaystackPayment(config);
-
-  const onSuccess = (reference: string) => {
+  const onSuccess = (response: SuccessResponse) => {
     // Implementation for whatever you want to do with reference and after success call.
-    console.log(reference);
+    console.log(response);
+    alert("Payment successful! Reference: " + response.reference);
   };
 
   const onClose = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("closed");
+    console.log("Payment closed");
+    alert("Payment was not completed.");
   };
 
   const makePayment = () => {
-    initializePayment({
-      onSuccess,
-      onClose,
+    const handler = (window as any).PaystackPop.setup({
+      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
+      email: "juliusogunleye@gmail.com",
+      amount: 250000 * 100, // Amount in kobo
+      currency: "NGN",
+      ref: new Date().getTime().toString(), // Generates a unique reference
+      callback: onSuccess,
+      onClose: onClose,
     });
+
+    handler.openIframe();
   };
 
   const login = useGoogleLogin({

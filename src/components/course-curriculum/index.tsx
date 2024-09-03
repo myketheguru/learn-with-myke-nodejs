@@ -45,7 +45,7 @@ const CourseCurriculum = () => {
   const ACTIVE_BORDER = BORDER_COLOR[active as keyof typeof GRADIENTS];
 
   return (
-    <div className='mt-[130px] relative'>
+    <div className='mt-[130px] relative px-6 md:px-12 xl:px-0'>
       <h4 className='text-[50px] text-center font-black font-inter mb-[30px]'>
         Course Curriculum
       </h4>
@@ -70,13 +70,13 @@ const CourseCurriculum = () => {
           </Tabs.List>
 
           <Tabs.Content
-            className={`pt-[26px] pb-[55px] transition-colors ${ACTIVE_GRAD}`}
+            className={`px-6 lg:px-0 pt-[26px] pb-[55px] transition-colors ${ACTIVE_GRAD}`}
             value='01'>
             <WeekOne />
           </Tabs.Content>
 
           <Tabs.Content
-            className={`pt-[26px] pb-[55px] transition-colors ${ACTIVE_GRAD}`}
+            className={`px-6 lg:px-0 pt-[26px] pb-[55px] transition-colors ${ACTIVE_GRAD}`}
             value='02'>
             <WeekTwo />
           </Tabs.Content>

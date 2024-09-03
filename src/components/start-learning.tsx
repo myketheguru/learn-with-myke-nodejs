@@ -6,8 +6,8 @@ import { formatNumber } from "@/utils/functions";
 
 const StartLearning = () => {
   return (
-    <div className='container mx-auto mt-[120px] pb-[158px] relative'>
-      <div className='relative flex flex-col justify-center items-center h-[278px] rounded-[40px] border border-[#2d2d2d] bg-[rgba(0, 0, 0, 0.1)]'>
+    <div className='container mx-auto mt-[120px] pb-[158px] relative  px-6 md:px-12 xl:px-0'>
+      <div className='py-8 relative flex flex-col justify-center items-center md:h-[278px] rounded-[40px] border border-[#2d2d2d] bg-[rgba(0, 0, 0, 0.1)] px-6'>
         <h4 className='flex text-[40px] leading-[45px] mb-2 font-dmSans font-bold'>
           Start learning now{" "}
           <Image
@@ -25,7 +25,7 @@ const StartLearning = () => {
 
         <Link
           href='/start-learning'
-          className='w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
+          className='w-full max-w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
           <p>Join Online Class</p>
 
           <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>

@@ -14,10 +14,24 @@ const LetsBuild = () => {
       keenSliderInstance.current = new KeenSlider(sliderRef.current, {
         loop: true,
         mode: "free-snap",
-        slides: {
-          perView: "auto",
-          spacing: 25,
+        breakpoints: {
+          "(min-width: 768px)": {
+            slides: { perView: 2, spacing: 25 },
+          },
+          "(min-width: 1024px)": {
+            slides: {
+              perView: 3,
+              spacing: 25,
+            },
+          },
+          "(min-width: 1280px)": {
+            slides: {
+              perView: "auto",
+              spacing: 25,
+            },
+          },
         },
+        slides: { perView: 1, spacing: 25 },
       });
     }
 
@@ -28,7 +42,7 @@ const LetsBuild = () => {
 
   return (
     <div className='pb-[90px] relative'>
-      <div className='max-w-[532px] mx-auto text-center mt-52 mb-10'>
+      <div className='px-6 md:px-12 xl:px-0 w-full md:max-w-[632px] xl:max-w-[532px] mx-auto text-center mt-52 mb-10'>
         <h4 className='text-[50px] leading-[54px] mb-3'>
           Lets <span className='text-[#00CE79]'>Build</span> interesting solutions
           together

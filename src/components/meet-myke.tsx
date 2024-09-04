@@ -4,7 +4,7 @@ import React from "react";
 
 const MeetMyke = () => {
   return (
-    <div className='container max-w-container-1140 mx-auto mt-32 relative'>
+    <div className='container px-6 md:px-12 xl:px-0 lg:max-w-container-1140 mx-auto mt-32 relative'>
       <div className='max-w-[460px]'>
         <div className='w-[130px] mb-2 py-3 px-5 rounded-[20px] bg-[rgb(217,217,217,0.1)]'>
           <span className='text-sm font-inter opacity-50'>1% of the 1%</span>

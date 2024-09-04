@@ -3,7 +3,7 @@ import React from "react";
 
 const Faq = () => {
   return (
-    <div className='container mx-auto mt-20 relative'>
+    <div className='container mx-auto mt-20 relative px-6 md:px-12 xl:px-0'>
       <div className='mb-[33px]'>
         <h4 className='max-w-[420px] text-[50px] leading-[75px] mb-[14px]'>
           Frequently Asked Questions
@@ -22,7 +22,7 @@ const Faq = () => {
         </button>
       </div>
 
-      <div className='grid grid-cols-3 w-full gap-x-16 pb-10 relative'>
+      <div className='flex flex-col gap-y-5 md:grid md:grid-cols-3 w-full md:gap-x-16 pb-10 relative'>
         <div>
           <h5 className='text-2xl font-medium mb-2'>
             What are the prerequisites for this course?
@@ -63,7 +63,7 @@ const Faq = () => {
         />
       </div>
 
-      <div className='grid grid-cols-3 w-full gap-x-16 relative pt-10 pb-5'>
+      <div className='flex flex-col gap-y-5 md:grid md:grid-cols-3 w-full md:gap-x-16 relative pt-10 pb-5'>
         <div>
           <h5 className='text-2xl font-medium mb-2'>
             Do you provide a certificate of completion?

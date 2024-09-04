@@ -4,10 +4,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className='container max-w-container-1140 mx-auto mt-[124px] grid grid-cols-3 gap-5 mb-[200px]'>
-      <div className='grid grid-rows-2 gap-4'>
-        <div className='w-[360px] rounded-[30px] p-8 border  border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
-          <h5 className='font-bold mb-2 text-[#12B669] font-dmSans text-[34px] leading-[44.27px]'>
+    <footer className='px-6 md:px-12 xl:px-0 container xl:max-w-container-1140 mx-auto mt-[124px] md:grid md:grid-cols-2 md:grid- lg:grid-cols-3 gap-5 mb-[200px]'>
+      <div className='grid grid-rows-2 gap-4 mb-4 md:mb-0 w-full'>
+        <div className='w-full rounded-[30px] p-8 border  border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
+          <h5 className='font-bold mb-2 text-[#12B669] font-dmSans lg:text-2xl text-[34px] xl:text-[34px] leading-[44.27px]'>
             Learnwithmyke
           </h5>
           <p className='text-sm opacity-50'>
@@ -19,7 +19,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className='w-[360px] rounded-[30px] p-8 border  flex items-center border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
+        <div className='w-full rounded-[30px] p-8 border  flex items-center border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
           <p className='text-sm opacity-50'>
             © {new Date().getFullYear()} WithMyke. For more information about us, reach
             out to us at{" "}
@@ -32,13 +32,13 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className='w-[360px] h-full flex flex-col mb-4 rounded-[30px] py-[38px] border border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
+      <div className='w-full h-full flex flex-col mb-4 rounded-[30px] py-[38px] border border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
         <div className='px-[47px]'>
           <h5 className='font-bold mb-2 font-dmSans text-[40px] leading-[52.08px] opacity-[0.34]'>
             Menu
           </h5>
 
-          <ul className='flex flex-col gap-y-[26px]'>
+          <ul className='flex flex-col gap-y-[26px] mb-6'>
             <li>
               <Link className='text-lg' href='/'>
                 Home
@@ -80,13 +80,13 @@ const Footer = () => {
         </div>
       </div>
 
-      <div>
-        <div className='mb-5 w-[360px] rounded-[30px] p-8 border flex flex-col justify-center items-center border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
+      <div className='md:col-span-2 md:grid md:grid-cols-2 md:gap-x-5 lg:col-span-1 lg:block'>
+        <div className='mb-5 w-full rounded-[30px] p-8 border flex flex-col justify-center items-center border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
           <Image className='mb-2' src='/qr.png' width={169} height={169} alt='QR code' />
           <p className='text-xl font-dmSans'>Scan to contact us</p>
         </div>
 
-        <div className='w-[360px] rounded-[30px] p-8 border flex-col flex border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
+        <div className='w-full rounded-[30px] p-8 border flex-col flex border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
           <h5 className='mb-1 text-lg flex gap-x-2 items-center'>
             Free course videos
             <Image src='/gift.svg' width={20} height={20} alt='Gift' />

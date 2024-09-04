@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useGoogleLogin } from "@react-oauth/google";
 import * as Dialog from "@radix-ui/react-dialog";
-import { usePaystackPayment } from "react-paystack";
+import { formatNumber } from "@/utils/functions";
 
 import Header from "@/components/header";
 
@@ -138,7 +138,9 @@ const StartLearning = () => {
                   </div>
 
                   <div>
-                    <p className='font-medium text-lg'>₦250,000</p>
+                    <p className='font-medium text-lg'>
+                      ₦{formatNumber(process.env.NEXT_PUBLIC_CLASS_FEE || 0)}
+                    </p>
                     <p className='text-sm opacity-50'>Subscription fee</p>
                   </div>
 
@@ -187,7 +189,9 @@ const StartLearning = () => {
                   className='mb-3 w-full mt-[43px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
                   <p>Make Payment</p>
 
-                  <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>₦250,000</p>
+                  <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>
+                    ₦{formatNumber(process.env.NEXT_PUBLIC_CLASS_FEE || 0)}
+                  </p>
                 </button>
 
                 <div className='flex items-center text-[10px] gap-x-[4px]'>

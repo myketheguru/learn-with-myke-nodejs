@@ -2,9 +2,11 @@
 
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import KeenSlider, { type KeenSliderInstance } from "keen-slider";
 import "keen-slider/keen-slider.min.css";
-import Link from "next/link";
+
+import { formatNumber } from "@/utils/functions";
 
 const Hero = () => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
@@ -13,12 +15,20 @@ const Hero = () => {
   useEffect(() => {
     if (sliderRef.current) {
       keenSliderInstance.current = new KeenSlider(sliderRef.current, {
+        breakpoints: {
+          "(min-width: 768px)": {
+            slides: { perView: 2, spacing: 16 },
+          },
+          "(min-width: 1024px)": {
+            slides: {
+              perView: "auto",
+              spacing: 16,
+            },
+          },
+        },
         loop: true,
         mode: "free-snap",
-        slides: {
-          perView: "auto",
-          spacing: 16,
-        },
+        slides: { perView: 1, spacing: 16 },
       });
     }
 
@@ -29,12 +39,12 @@ const Hero = () => {
 
   return (
     <>
-      <div className='relative container max-w-container-1140 flex justify-between mx-auto mt-32'>
-        <div className='max-w-[620px]'>
-          <h3 className='font-inter font-black text-[80px] leading-[96.82px] mb-3'>
+      <div className='relative container lg:max-w-container-1140 md:flex md:justify-between mx-auto mt-32 px-6 md:px-12 xl:px-0'>
+        <div className='md:max-w-[340px] lg:max-w-[620px] mb-12'>
+          <h3 className='font-inter font-black text-5xl leading-[60px] lg:text-[80px] lg:leading-[96.82px] mb-3'>
             Master Node.js in 11 Weeks
           </h3>
-          <p className='max-w-[484px] opacity-50 mb-6'>
+          <p className='md:max-w-[484px] opacity-50 mb-6'>
             Unlock your potential as a Node.js and JavaScript developer with our dynamic
             study guide. Start from the basics and advance to creating powerful full-stack
             applications!
@@ -42,10 +52,12 @@ const Hero = () => {
 
           <Link
             href='/start-learning'
-            className='mb-3 w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
+            className='mb-3 w-full max-w-[307px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
             <p>Join Online Class</p>
 
-            <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>₦250,000</p>
+            <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>
+              ₦{formatNumber(process.env.NEXT_PUBLIC_CLASS_FEE || 0)}
+            </p>
           </Link>
 
           {/* <p className='text-xs'>
@@ -95,9 +107,15 @@ const Hero = () => {
         />
       </div>
 
-      <div className='container max-w-container-1140 mx-auto mt-32 relative h-[276px]'>
-        <div className='flex justify-between absolute left-0 -right-[150px]'>
-          <Image src='/why-node.svg' alt='Why Node?' width={288} height={292.99} />
+      <div className='container md:max-w-container-1140 xl:mx-auto mt-20 lg:mt-32 relative lg:h-[276px] px-6 md:px-12 lg:ml-12 lg:px-0'>
+        <div className='lg:flex lg:justify-between lg:absolute lg:left-0 lg:-right-[150px]'>
+          <Image
+            className='mx-auto mb-8 lg:mb-0 lg:mx-0'
+            src='/why-node.svg'
+            alt='Why Node?'
+            width={288}
+            height={292.99}
+          />
 
           <div ref={sliderRef} className='keen-slider'>
             <div className='max-w-[328px] h-[276px] keen-slider__slide flex flex-col justify-end px-9 py-6 bg-opacity-10 bg-green-900 rounded-[20px]'>

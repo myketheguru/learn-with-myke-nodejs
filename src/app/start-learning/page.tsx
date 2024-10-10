@@ -177,7 +177,7 @@ const StartLearning = () => {
                   </div>
 
                   <div>
-                    <p className='font-medium text-lg'>27/7/2024</p>
+                    <p className='font-medium text-lg'>{new Date().toLocaleDateString()}</p>
                     <p className='text-sm opacity-50'>Date</p>
                   </div>
 

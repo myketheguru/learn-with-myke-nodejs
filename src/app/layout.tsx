@@ -34,14 +34,14 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={`${inter.variable} ${poppins.variable} ${outfit.variable} ${dmSans.variable}`}>
-        {/* <GoogleOAuthProvider
+        <GoogleOAuthProvider
           clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
           >
           {children}
-        </GoogleOAuthProvider> */}
-        <AuthContextProvider>
+        </GoogleOAuthProvider>
+        {/* <AuthContextProvider>
           {children}
-        </AuthContextProvider>
+        </AuthContextProvider> */}
       </body>
     </html>
   );

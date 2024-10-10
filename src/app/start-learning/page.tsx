@@ -2,16 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useGoogleLogin } from "@react-oauth/google";
 import * as Dialog from "@radix-ui/react-dialog";
 import { formatNumber } from "@/utils/functions";
 
 import Header from "@/components/header";
 import { UserAuth } from "../context/auth-context";
-
-type SuccessResponse = {
-  reference: string;
-};
+import PaystackButton from "@/components/paystack/paystack-button";
 
 const StartLearning = () => {
   const [open, setOpen] = useState(false);
@@ -50,32 +46,6 @@ const StartLearning = () => {
     checkAuthentication();
   }, [user]);  
 
-  const onSuccess = (response: SuccessResponse) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    console.log(response);
-    alert("Payment successful! Reference: " + response.reference);
-  };
-
-  const onClose = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("Payment closed");
-    alert("Payment was not completed.");
-  };
-
-  const makePayment = () => {
-    const handler = (window as any).PaystackPop.setup({
-      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
-      email: user?.email,
-      amount: 250000 * 100, // Amount in kobo
-      currency: "NGN",
-      ref: new Date().getTime().toString(), // Generates a unique reference
-      callback: onSuccess,
-      onClose: onClose,
-    });
-
-    handler.openIframe();
-  };
-
   // const login = useGoogleLogin({
   //   onSuccess: (tokenResponse) => {
   //     console.log("Success:", tokenResponse);
@@ -85,6 +55,8 @@ const StartLearning = () => {
   //     console.log("Login Failed");
   //   },
   // });
+
+  const courseAmount = parseFloat(process.env.NEXT_PUBLIC_CLASS_FEE as string);
 
   return (
     <>
@@ -229,16 +201,8 @@ const StartLearning = () => {
                   )}
                 </div>
 
-                <button
-                  type='button'
-                  onClick={makePayment}
-                  className='mb-3 w-full mt-[43px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
-                  <p>Make Payment</p>
-
-                  <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>
-                    ₦{formatNumber(process.env.NEXT_PUBLIC_CLASS_FEE || 0)}
-                  </p>
-                </button>
+                {/* Paystack button here */}
+                <PaystackButton user={user} amount={courseAmount} />
 
                 <div className='flex items-center text-[10px] gap-x-[4px]'>
                   <p>Got a question</p>

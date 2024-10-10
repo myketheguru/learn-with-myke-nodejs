@@ -51,11 +51,23 @@ const StartLearning = () => {
     onSuccess: (tokenResponse) => {
       console.log("Success:", tokenResponse);
       // Handle the tokenResponse, e.g., send it to your backend
+      // ...
+
+      // Open invoice dialog
+      setOpen(true)
     },
     onError: () => {
       console.log("Login Failed");
     },
   });
+  
+  const handleLogin = () => {
+    // Set loading state
+    setLoading(true)
+
+    // Call google
+    login();
+  }
 
   const courseAmount = parseFloat(process.env.NEXT_PUBLIC_CLASS_FEE as string);
 

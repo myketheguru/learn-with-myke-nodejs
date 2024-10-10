@@ -8,6 +8,7 @@ import { formatNumber } from "@/utils/functions";
 import Header from "@/components/header";
 import { UserAuth } from "../context/auth-context";
 import PaystackButton from "@/components/paystack/paystack-button";
+import { useGoogleLogin } from "@react-oauth/google";
 
 const StartLearning = () => {
   const [open, setOpen] = useState(false);
@@ -46,15 +47,15 @@ const StartLearning = () => {
     checkAuthentication();
   }, [user]);  
 
-  // const login = useGoogleLogin({
-  //   onSuccess: (tokenResponse) => {
-  //     console.log("Success:", tokenResponse);
-  //     // Handle the tokenResponse, e.g., send it to your backend
-  //   },
-  //   onError: () => {
-  //     console.log("Login Failed");
-  //   },
-  // });
+  const login = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      console.log("Success:", tokenResponse);
+      // Handle the tokenResponse, e.g., send it to your backend
+    },
+    onError: () => {
+      console.log("Login Failed");
+    },
+  });
 
   const courseAmount = parseFloat(process.env.NEXT_PUBLIC_CLASS_FEE as string);
 
@@ -102,7 +103,8 @@ const StartLearning = () => {
           <button
             disabled={!agreedToTerms || loading}
             type='button'
-            onClick={() => handleSignIn()}
+            onClick={() => login()}
+            // onClick={() => handleSignIn()}
             className='w-[396px] gap-x-[13px] h-[52px] flex items-center justify-center bg-white mx-auto rounded-[40px] text-[#242424] text-sm font-medium transition-all duration-500 disabled:opacity-50'>
             {!loading ? <>
               <Image width={24} height={24} src='/google.svg' alt='Google' className='' />

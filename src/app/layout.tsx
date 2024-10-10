@@ -3,6 +3,7 @@ import { inter, poppins, outfit, dmSans } from "@/fonts";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import "./globals.scss";
+import { AuthContextProvider } from "./context/auth-context";
 
 export const metadata: Metadata = {
   title:
@@ -33,10 +34,14 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={`${inter.variable} ${poppins.variable} ${outfit.variable} ${dmSans.variable}`}>
-        <GoogleOAuthProvider
-          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
+        {/* <GoogleOAuthProvider
+          clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+          >
           {children}
-        </GoogleOAuthProvider>
+        </GoogleOAuthProvider> */}
+        <AuthContextProvider>
+          {children}
+        </AuthContextProvider>
       </body>
     </html>
   );

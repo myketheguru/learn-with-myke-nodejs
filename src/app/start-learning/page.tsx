@@ -1,57 +1,62 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { useGoogleLogin } from "@react-oauth/google";
 import * as Dialog from "@radix-ui/react-dialog";
 import { formatNumber } from "@/utils/functions";
 
 import Header from "@/components/header";
-
-type SuccessResponse = {
-  reference: string;
-};
+import { UserAuth } from "../context/auth-context";
+import PaystackButton from "@/components/paystack/paystack-button";
 
 const StartLearning = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [showCouponInput, setShowCouponInput] = useState(false);
   const [couponApplied, setCouponApplied] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false)
 
-  const onSuccess = (response: SuccessResponse) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    console.log(response);
-    alert("Payment successful! Reference: " + response.reference);
+  const { user, googleSignIn, logOut } = UserAuth();
+  const [loading, setLoading] = useState(true);
+
+  const handleSignIn = async () => {
+    setLoading(true)
+    try {
+      const result = await googleSignIn();
+      console.log(result)
+      setLoading(false)
+      setOpen(true)
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const onClose = () => {
-    // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("Payment closed");
-    alert("Payment was not completed.");
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const makePayment = () => {
-    const handler = (window as any).PaystackPop.setup({
-      key: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY,
-      email: "juliusogunleye@gmail.com",
-      amount: 250000 * 100, // Amount in kobo
-      currency: "NGN",
-      ref: new Date().getTime().toString(), // Generates a unique reference
-      callback: onSuccess,
-      onClose: onClose,
-    });
+  useEffect(() => {
+    const checkAuthentication = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      setLoading(false);
+    };
+    checkAuthentication();
+  }, [user]);  
 
-    handler.openIframe();
-  };
+  // const login = useGoogleLogin({
+  //   onSuccess: (tokenResponse) => {
+  //     console.log("Success:", tokenResponse);
+  //     // Handle the tokenResponse, e.g., send it to your backend
+  //   },
+  //   onError: () => {
+  //     console.log("Login Failed");
+  //   },
+  // });
 
-  const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => {
-      console.log("Success:", tokenResponse);
-      // Handle the tokenResponse, e.g., send it to your backend
-    },
-    onError: () => {
-      console.log("Login Failed");
-    },
-  });
+  const courseAmount = parseFloat(process.env.NEXT_PUBLIC_CLASS_FEE as string);
 
   return (
     <>
@@ -75,6 +80,8 @@ const StartLearning = () => {
                 id='terms'
                 type='checkbox'
                 className='terms hidden custom-checkbox'
+                checked={agreedToTerms}
+                onChange={() => setAgreedToTerms(!agreedToTerms)}
               />
 
               <label
@@ -93,11 +100,22 @@ const StartLearning = () => {
           </div>
 
           <button
+            disabled={!agreedToTerms || loading}
             type='button'
-            onClick={() => login()}
-            className='w-[396px] gap-x-[13px] h-[52px] flex items-center justify-center bg-white mx-auto rounded-[40px] text-[#242424] text-sm font-medium'>
-            <Image width={24} height={24} src='/google.svg' alt='Google' className='' />
-            Sign up with google
+            onClick={() => handleSignIn()}
+            className='w-[396px] gap-x-[13px] h-[52px] flex items-center justify-center bg-white mx-auto rounded-[40px] text-[#242424] text-sm font-medium transition-all duration-500 disabled:opacity-50'>
+            {!loading ? <>
+              <Image width={24} height={24} src='/google.svg' alt='Google' className='' />
+              Sign up with google
+            </> :
+            <>
+              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-emerald-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span className="text-emerald-900">Please Wait...</span>
+            </>
+            }
           </button>
         </div>
       </div>
@@ -129,11 +147,11 @@ const StartLearning = () => {
               <Dialog.Description className='mt-6'>
                 <div className='flex flex-col gap-y-4'>
                   <div>
-                    <p className='font-medium text-lg'>Julius Ogunleye</p>
+                    <p className='font-medium text-lg capitalize'>{user?.displayName}</p>
                     <p className='text-sm opacity-50'>Name</p>
                   </div>
                   <div>
-                    <p className='font-medium text-lg'>Juliusogunleye@gmail.com</p>
+                    <p className='font-medium text-lg'>{user?.email}</p>
                     <p className='text-sm opacity-50'>Email</p>
                   </div>
 
@@ -183,16 +201,8 @@ const StartLearning = () => {
                   )}
                 </div>
 
-                <button
-                  type='button'
-                  onClick={makePayment}
-                  className='mb-3 w-full mt-[43px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green'>
-                  <p>Make Payment</p>
-
-                  <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>
-                    ₦{formatNumber(process.env.NEXT_PUBLIC_CLASS_FEE || 0)}
-                  </p>
-                </button>
+                {/* Paystack button here */}
+                <PaystackButton user={user} amount={courseAmount} />
 
                 <div className='flex items-center text-[10px] gap-x-[4px]'>
                   <p>Got a question</p>

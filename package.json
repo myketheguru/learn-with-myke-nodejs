@@ -12,8 +12,9 @@
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.0",
     "@react-oauth/google": "^0.12.1",
+    "firebase": "^10.14.0",
     "keen-slider": "^6.8.6",
-    "next": "14.2.6",
+    "next": "^14.2.6",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.77.8"

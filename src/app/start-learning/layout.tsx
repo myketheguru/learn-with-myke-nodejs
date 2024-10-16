@@ -1,8 +1,10 @@
+import Header from "@/components/header";
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Sign Up for Node.js Course | Secure Your Spot in Our 12-Week Program",
+  title: "Sign Up for Node.js Course | Secure Your Spot in Our 11-Week Program",
   description:
     "Secure your spot in our Node.js course. Sign up with Google and start your journey to becoming a Node.js expert. Flexible payment options available.",
   keywords:
@@ -16,8 +18,13 @@ export default function Page({
 }>) {
   return (
     <>
-      {children}
-      <Script src='https://js.paystack.co/v2/inline.js' />
+      <div className="relative bg-[url(/desktop-bg.svg)] bg-[center_0] bg-no-repeat bg-cover w-full h-screen">
+        <Header />
+        <div className="h-full px-[5%]">
+          <Suspense>{children}</Suspense>
+        </div>
+      </div>
+      <Script src="https://js.paystack.co/v2/inline.js" />
     </>
   );
 }

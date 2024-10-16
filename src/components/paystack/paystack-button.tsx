@@ -43,7 +43,8 @@ const PaystackButton = ({ user, amount }: { user: User; amount: number }) => {
     <button
       type="button"
       onClick={makePayment}
-      className="mb-3 w-full mt-[43px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green"
+      className="mb-3 w-full mt-[43px] font-semibold flex pl-6 items-center justify-between text-white px-[14px] py-[10px] rounded-[10px] bg-lm-green disabled:opacity-50"
+      disabled={(amount) === 0}
     >
       <p>Make Payment</p>
 

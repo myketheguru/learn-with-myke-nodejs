@@ -7,8 +7,9 @@ import KeenSlider, { type KeenSliderInstance } from "keen-slider";
 import "keen-slider/keen-slider.min.css";
 
 import { formatNumber } from "@/utils/functions";
+import { ICourse } from "@/types/landing";
 
-const Hero = () => {
+const Hero = ({ courseData }: { courseData: ICourse }) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const keenSliderInstance = useRef<KeenSliderInstance | null>(null);
 
@@ -42,12 +43,10 @@ const Hero = () => {
       <div className='relative container lg:max-w-container-1140 md:flex md:justify-between mx-auto mt-32 px-6 md:px-12 xl:px-0'>
         <div className='md:max-w-[340px] lg:max-w-[620px] mb-12'>
           <h3 className='font-inter font-black text-5xl leading-[60px] lg:text-[80px] lg:leading-[96.82px] mb-3'>
-            Master Node.js in 11 Weeks
+            {courseData?.title}
           </h3>
           <p className='md:max-w-[484px] opacity-50 mb-6'>
-            Unlock your potential as a Node.js and JavaScript developer with our dynamic
-            study guide. Start from the basics and advance to creating powerful full-stack
-            applications!
+            {courseData?.description}
           </p>
 
           <Link
@@ -56,7 +55,7 @@ const Hero = () => {
             <p>Join Online Class</p>
 
             <p className='bg-[#08683B] rounded-lg px-4 py-2 text-sm'>
-              ₦{formatNumber(process.env.NEXT_PUBLIC_CLASS_FEE || 0)}
+              ₦{formatNumber(courseData?.price || 0)}
             </p>
           </Link>
 

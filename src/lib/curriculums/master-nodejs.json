@@ -1,0 +1,180 @@
+{
+    "weeks": [
+      {
+        "week": 1,
+        "title": "Introduction to Node.js and Backend Development",
+        "topics": [
+          "What is Node.js? Overview and use cases",
+          "Installing Node.js, npm, and setting up the development environment",
+          "Introduction to JavaScript (for backend developers)",
+          "Understanding the event-driven architecture of Node.js",
+          "Basic Node.js program: Reading from and writing to the console"
+        ],
+        "handsOnExercises": [
+          "Install Node.js and run a simple 'Hello World' application",
+          "Create a program that takes user input from the command line"
+        ],
+        "project": "Build a command-line calculator application"
+      },
+      {
+        "week": 2,
+        "title": "Working with Modules and File System in Node.js",
+        "topics": [
+          "Node.js Modules: CommonJS and ES6 modules",
+          "Core modules: fs, path, os",
+          "Creating custom modules",
+          "File System: Reading and writing files asynchronously",
+          "Introduction to npm: Installing and using packages"
+        ],
+        "handsOnExercises": [
+          "Create a simple module that performs math operations (addition, subtraction, etc.)",
+          "Read and write data to/from a file using the fs module"
+        ],
+        "project": "Build a simple note-taking app where users can save and retrieve notes from a file"
+      },
+      {
+        "week": 3,
+        "title": "Asynchronous Programming and Event Loop",
+        "topics": [
+          "Understanding the Event Loop",
+          "Callbacks and Callback Hell",
+          "Promises and async/await",
+          "Error handling in asynchronous code"
+        ],
+        "handsOnExercises": [
+          "Refactor file read/write operations from Week 2 to use Promises",
+          "Create a function that simulates an API request using setTimeout with Promises"
+        ],
+        "project": "Build a file downloader application that simulates downloading multiple files concurrently using Promises and async/await"
+      },
+      {
+        "week": 4,
+        "title": "HTTP, RESTful APIs, and Express.js",
+        "topics": [
+          "Introduction to HTTP: Requests, responses, status codes, and methods (GET, POST, PUT, DELETE)",
+          "Building a basic web server using the http module",
+          "Introduction to Express.js: What it is and why we use it",
+          "Routing and handling requests/responses",
+          "Middleware and its importance"
+        ],
+        "handsOnExercises": [
+          "Create an Express server with routes for GET, POST, PUT, and DELETE",
+          "Use query parameters and body data to handle user input in the routes"
+        ],
+        "project": "Build a basic RESTful API for managing a to-do list (CRUD operations using Express.js)"
+      },
+      {
+        "week": 5,
+        "title": "Working with Databases (SQL and NoSQL)",
+        "topics": [
+          "Introduction to databases: SQL vs NoSQL",
+          "Introduction to MongoDB and its advantages for Node.js",
+          "Setting up MongoDB (locally or via MongoDB Atlas)",
+          "Using Mongoose to interact with MongoDB in a Node.js app",
+          "Introduction to SQL and relational databases (e.g., PostgreSQL, MySQL)",
+          "Setting up a SQL database (locally or via cloud services)",
+          "Using Sequelize or Prisma to interact with SQL databases in Node.js",
+          "Basic CRUD operations in both MongoDB and SQL"
+        ],
+        "handsOnExercises": [
+          "Connect an Express.js server to MongoDB using Mongoose and to a SQL database using Sequelize or Prisma",
+          "Create models for both a NoSQL and SQL database and perform basic CRUD operations"
+        ],
+        "project": "Extend the to-do list API to allow users to choose between MongoDB and a SQL database to store tasks, enabling persistence in both databases"
+      },
+      {
+        "week": 6,
+        "title": "Authentication and Authorization",
+        "topics": [
+          "Introduction to Authentication vs Authorization",
+          "Using JSON Web Tokens (JWT) for stateless authentication",
+          "Password hashing with bcrypt",
+          "Implementing user authentication in Express",
+          "Securing routes with JWT"
+        ],
+        "handsOnExercises": [
+          "Create sign-up and login routes that return JWT tokens",
+          "Secure a route so that only authenticated users can access it"
+        ],
+        "project": "Add user authentication to the to-do list API, so users can only view and manage their own tasks"
+      },
+      {
+        "week": 7,
+        "title": "Advanced REST API Design and Best Practices",
+        "topics": [
+          "Advanced API design principles: Pagination, filtering, sorting",
+          "Best practices for building scalable APIs",
+          "Versioning APIs for future-proofing",
+          "Error handling and validation",
+          "Logging and debugging APIs"
+        ],
+        "handsOnExercises": [
+          "Add pagination and filtering to the to-do list API",
+          "Add input validation for the to-do items using a validation library like Joi"
+        ],
+        "project": "Refactor the to-do list API to include pagination, filtering, and advanced error handling"
+      },
+      {
+        "week": 8,
+        "title": "Testing Node.js Applications",
+        "topics": [
+          "Introduction to testing and the importance of testing backend applications",
+          "Unit testing using Mocha, Chai, or Jest",
+          "Integration testing with Supertest",
+          "Mocking external services for isolated tests"
+        ],
+        "handsOnExercises": [
+          "Write unit tests for individual modules (e.g., utility functions)",
+          "Write integration tests for your to-do API using Supertest"
+        ],
+        "project": "Add unit and integration tests to the to-do API, covering critical paths (e.g., CRUD operations, authentication)"
+      },
+      {
+        "week": 9,
+        "title": "Real-time Communication with WebSockets",
+        "topics": [
+          "Introduction to WebSockets and real-time communication",
+          "Setting up WebSocket communication in Node.js with socket.io",
+          "Building a real-time chat feature in an application"
+        ],
+        "handsOnExercises": [
+          "Create a basic chat server using WebSockets and socket.io",
+          "Implement broadcasting of messages to all connected clients"
+        ],
+        "project": "Add a real-time commenting feature to your to-do API where users can comment on tasks, and comments are broadcast in real-time to all users"
+      },
+      {
+        "week": 10,
+        "title": "Deploying Node.js Applications",
+        "topics": [
+          "Introduction to server deployment: What to consider before deploying",
+          "Deploying a Node.js app on Heroku or Vercel",
+          "Setting up environments (development, production)",
+          "Environment variables with dotenv",
+          "Using PM2 for process management",
+          "Setting up a reverse proxy using Nginx (optional)"
+        ],
+        "handsOnExercises": [
+          "Deploy your to-do API to Heroku or Vercel",
+          "Set up environment variables and test your API in production"
+        ],
+        "project": "Deploy the final version of the to-do list API, ensuring that users can access it from the cloud with environment-based configurations"
+      },
+      {
+        "week": 11,
+        "title": "Advanced Node.js Concepts and Final Project",
+        "topics": [
+          "Introduction to Streams and Buffers in Node.js",
+          "Working with file uploads and streams (handling large files)",
+          "Understanding clustering for scaling Node.js applications",
+          "Final review of all concepts learned throughout the course"
+        ],
+        "handsOnExercises": [
+          "Build a file uploader that streams files to the server",
+          "Implement clustering for your server to handle multiple concurrent users"
+        ],
+        "project": "Build a complete backend application from scratch (e.g., a blog platform, e-commerce API, or a task management app). Include user authentication, database integration, real-time communication, and advanced API features. Deploy the final project and ensure it’s production-ready"
+      }
+    ]
+  }
+  

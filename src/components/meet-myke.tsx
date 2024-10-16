@@ -32,13 +32,13 @@ const MeetMyke = () => {
         <p className='mb-2'>Connect with Mike</p>
 
         <div className='flex gap-x-3'>
-          <Link href='/#'>
+          <Link target="_" href='https://github.com/myketheguru'>
             <Image width={35} height={35} alt='Github' src='/github.svg' />
           </Link>
-          <Link href='/#'>
+          <Link target="_" href='https://linkedin.com/in/mikexpress'>
             <Image width={35} height={35} alt='Linkedin' src='/linkedin-green.svg' />
           </Link>
-          <Link href='/#'>
+          <Link target="_" href='https://twitter.com/_darkmyke'>
             <Image width={35} height={35} alt='X' src='/x-green.svg' />
           </Link>
         </div>

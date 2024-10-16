@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+const qrLink = process.env.NEXT_PUBLIC_WHATSAPP_CHAT_QR_LINK
+
 const Footer = () => {
   return (
     <footer className='px-6 md:px-12 xl:px-0 container xl:max-w-container-1140 mx-auto mt-[124px] md:grid md:grid-cols-2 md:grid- lg:grid-cols-3 gap-5 mb-[200px]'>
@@ -45,17 +47,17 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link className='text-lg' href='/#'>
+              <Link className='text-lg' href='/start-learning'>
                 Login
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link
                 className='text-lg'
                 href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}>
                 Contact us
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link className='text-lg' href='/#'>
                 Terms of service
@@ -64,7 +66,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className='flex gap-x-3 mt-auto px-[34px]'>
+        <div className='flex gap-x-3 mt-auto px-[34px] hidden'>
           <Link href='/#'>
             <Image width={55} height={55} alt='Github' src='/github.svg' />
           </Link>
@@ -82,11 +84,11 @@ const Footer = () => {
 
       <div className='md:col-span-2 md:grid md:grid-cols-2 md:gap-x-5 lg:col-span-1 lg:block'>
         <div className='mb-5 w-full rounded-[30px] p-8 border flex flex-col justify-center items-center border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
-          <Image className='mb-2' src='/qr.png' width={169} height={169} alt='QR code' />
+          <Image className='mb-2' src={qrLink ?? ""} width={169} height={169} alt='QR code' />
           <p className='text-xl font-dmSans'>Scan to contact us</p>
         </div>
 
-        <div className='w-full rounded-[30px] p-8 border flex-col flex border-[#202020] bg-[rgba(0, 0, 0, 0.1)]'>
+        <div className='w-full rounded-[30px] p-8 border flex-col flex border-[#202020] bg-[rgba(0, 0, 0, 0.1)] md:hidden'>
           <h5 className='mb-1 text-lg flex gap-x-2 items-center'>
             Free course videos
             <Image src='/gift.svg' width={20} height={20} alt='Gift' />

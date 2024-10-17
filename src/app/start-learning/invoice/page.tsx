@@ -13,7 +13,8 @@ import axios from 'axios'
 
 const InvoicePage = () => {
   // Get Course ID
-  const courseId = coursesIdMap["nodejs_backend"];
+//   const courseId = coursesIdMap["nodejs_backend"];
+  const courseId = "01fa2e52-2d88-4a10-9560-9b75404f0031";
   const baseUrl = process.env.NEXT_PUBLIC_BACKEND_BASEURL;
 
   const [course, setCourse] = useState<ICourse>();
@@ -267,7 +268,7 @@ const InvoicePage = () => {
                 </div>
 
                 {/* Paystack button here */}
-                <PaystackButton user={{ ...jwtUser }} amount={courseAmount} />
+                <PaystackButton user={{ ...jwtUser }} amount={courseAmount} courseId={courseId} />
 
                 <div className="flex items-center text-[10px] gap-x-[4px]">
                   <p>Got a question</p>

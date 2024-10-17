@@ -9,7 +9,7 @@ type SuccessResponse = {
   reference: string;
 };
 
-const PaystackButton = ({ user, amount }: { user: User; amount: number }) => {
+const PaystackButton = ({ user, amount, courseId }: { user: User; amount: number, courseId: string }) => {
   const onSuccess = (response: SuccessResponse) => {
     // Implementation for whatever you want to do with reference and after success call.
     console.log(response);
@@ -29,7 +29,7 @@ const PaystackButton = ({ user, amount }: { user: User; amount: number }) => {
         email: user?.email,
         amount: amount * 100, // Amount in kobo
         currency: "NGN",
-        ref: new Date().getTime().toString(), // Generates a unique reference
+        ref: `${courseId}___${new Date().getTime().toString()}`, // Generates a unique reference
         callback: onSuccess,
         onClose: onClose,
       });

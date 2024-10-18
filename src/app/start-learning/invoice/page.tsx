@@ -9,12 +9,23 @@ import React, { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { coursesIdMap } from "@/lib/course-map";
 import { ICourse } from "@/types/landing";
-import axios from 'axios'
+import axios from "axios";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 const InvoicePage = () => {
   // Get Course ID
   const courseId = coursesIdMap["nodejs_backend"];
-//   const courseId = "01fa2e52-2d88-4a10-9560-9b75404f0031"; // Test course
+  //   const courseId = "01fa2e52-2d88-4a10-9560-9b75404f0031"; // Test course
   const baseUrl = process.env.NEXT_PUBLIC_BACKEND_BASEURL;
 
   const [course, setCourse] = useState<ICourse>();
@@ -23,11 +34,13 @@ const InvoicePage = () => {
   const [showCouponInput, setShowCouponInput] = useState(false);
   const [couponApplied, setCouponApplied] = useState(false);
   const [couponLoading, setCouponLoading] = useState(false);
-  const [couponData, setCouponData] = useState<any>()
-  const [couponError, setCouponError] = useState<string | null>()
+  const [couponData, setCouponData] = useState<any>();
+  const [couponError, setCouponError] = useState<string | null>();
   const [jwtUser, setJwtUser] = useState<any>({});
   const [courseAmount, setCourseAmount] = useState<number>(0);
   const [loading, setLoading] = useState(true);
+  const [paystackSuccess, setPaystackSuccess] = useState(false);
+  const [paystackFailure, setPaystackFailure] = useState(false);
 
   const handleAccountSwitch = () => {
     if (typeof window !== "undefined") {
@@ -37,7 +50,7 @@ const InvoicePage = () => {
   };
 
   const applyCoupon = async () => {
-    setCouponLoading(true)
+    setCouponLoading(true);
     const payload = {
       couponCode: couponCode,
       courseId: courseId,
@@ -48,29 +61,44 @@ const InvoicePage = () => {
     try {
       let res = await axios.post(`${baseUrl}/voucher/applyCoupon`, payload, {
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("jwt")}`
-        }
-      })
-
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+        },
+      });
 
       const data = res.data.data;
-      console.log(data)
+      console.log(data);
       setCourseAmount(parseFloat(data?.discountedAmount));
       if (data !== "Invalid Coupon Code") {
-          setCouponData(data)
-          setCouponApplied(true)
-          setCouponError(null)
+        setCouponData(data);
+        setCouponApplied(true);
+        setCouponError(null);
       } else {
-        setShowCouponInput(true)
-        setCouponError(data)
+        setShowCouponInput(true);
+        setCouponError(data);
       }
 
-      setCouponLoading(false)
+      setCouponLoading(false);
     } catch (error) {
-        setCouponLoading(false)
-        console.log(error)
+      setCouponLoading(false);
+      console.log(error);
     }
   };
+
+  const getEnrollment = async () => {
+    setLoading(true)
+    try {
+        let res = await axios.get(`${baseUrl}/cohort/cohortDetails/${courseId}/${jwtUser?.id}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            },
+          });
+
+          const data = res.data.data;
+      console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+  }
 
   useEffect(() => {
     const storedUser = localStorage.getItem("jwtUser");
@@ -92,9 +120,10 @@ const InvoicePage = () => {
       setLoading(false);
     }
     fetchCourse();
+    getEnrollment()
   }, []);
 
-//   console.log(course);
+  //   console.log(course);
 
   return (
     <div className="w-[510px] max-w-full flex flex-col gap-3 mx-auto mt-16">
@@ -199,7 +228,9 @@ const InvoicePage = () => {
 
                   {couponApplied && (
                     <div>
-                      <p className="font-medium text-lg">₦{formatNumber(couponData?.discountedAmount || 0)}</p>
+                      <p className="font-medium text-lg">
+                        ₦{formatNumber(couponData?.discountedAmount || 0)}
+                      </p>
                       <p className="text-xs opacity-50">Discounted Price</p>
                     </div>
                   )}
@@ -219,56 +250,74 @@ const InvoicePage = () => {
 
                   {showCouponInput && !couponData && (
                     <>
-                    <div className="flex items-center gap-x-[6px]">
-                      <input
-                        className="outline-none w-[calc(100%_-_150px)] px-6 py-4 text-sm placeholder:text-white h-[52px] border rounded-[10px] bg-transparent text-white"
-                        placeholder="Enter coupon code"
-                        value={couponCode}
-                        onChange={(e) => {setCouponCode(e.target.value); setCouponError(null)}}
-                      />
-                      <button
-                        type="button"
-                        className="text-sm h-[52px] w-[156px] font-medium  text-center inline-flex items-center justify-center bg-[#008D53] rounded-[10px] disabled:opacity-50"
-                        disabled={couponCode?.length < 7}
-                        onClick={() => applyCoupon()}
-                      >
-                        {
-                            couponLoading ? <svg
-                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-emerald-200"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              stroke-width="4"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg> : <span>Apply coupon</span>
-                        }
-                        
-                      </button>
-                    </div>
+                      <div className="flex items-center gap-x-[6px]">
+                        <input
+                          className="outline-none w-[calc(100%_-_150px)] px-6 py-4 text-sm placeholder:text-white h-[52px] border rounded-[10px] bg-transparent text-white"
+                          placeholder="Enter coupon code"
+                          value={couponCode}
+                          onChange={(e) => {
+                            setCouponCode(e.target.value);
+                            setCouponError(null);
+                          }}
+                        />
+                        <button
+                          type="button"
+                          className="text-sm h-[52px] w-[156px] font-medium  text-center inline-flex items-center justify-center bg-[#008D53] rounded-[10px] disabled:opacity-50"
+                          disabled={couponCode?.length < 7}
+                          onClick={() => applyCoupon()}
+                        >
+                          {couponLoading ? (
+                            <svg
+                              className="animate-spin -ml-1 mr-3 h-5 w-5 text-emerald-200"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                stroke-width="4"
+                              ></circle>
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              ></path>
+                            </svg>
+                          ) : (
+                            <span>Apply coupon</span>
+                          )}
+                        </button>
+                      </div>
 
-                    {couponError && <p className="text-[10px] -mt-2 text-red-500">{couponError}</p>}
+                      {couponError && (
+                        <p className="text-[10px] -mt-2 text-red-500">
+                          {couponError}
+                        </p>
+                      )}
                     </>
                   )}
 
-                  {couponData && couponData !== "Invalid Coupon Code" && <div className="bg-emerald-900 inline-flex p-2 px-4 rounded-full self-start">
-                    <p className="text-xs">{couponData?.discountPercentage} discount applied ⚡</p>
-                  </div>}
+                  {couponData && couponData !== "Invalid Coupon Code" && (
+                    <div className="bg-emerald-900 inline-flex p-2 px-4 rounded-full self-start">
+                      <p className="text-xs">
+                        {couponData?.discountPercentage} discount applied ⚡
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 {/* Paystack button here */}
-                <PaystackButton user={{ ...jwtUser }} amount={courseAmount} courseId={courseId} />
+                <PaystackButton
+                  user={{ ...jwtUser }}
+                  amount={courseAmount}
+                  courseId={courseId}
+                  setPaystackSuccess={setPaystackSuccess}
+                  setPaystackFailure={setPaystackFailure}
+                />
 
                 <div className="flex items-center text-[10px] gap-x-[4px]">
                   <p>Got a question</p>
@@ -285,6 +334,42 @@ const InvoicePage = () => {
           </div>
         </>
       )}
+
+      <AlertDialog
+        open={paystackSuccess}
+        onOpenChange={(open) => setPaystackSuccess(open)}
+      >
+        <AlertDialogContent className="bg-black border-emerald-500">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Payment Successful 🎉</AlertDialogTitle>
+            <AlertDialogDescription>
+              We have been notified of your payment. Please check your inbox for
+              any mails from us 🤩
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction>Okay</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog
+        open={paystackFailure}
+        onOpenChange={(open) => setPaystackFailure(open)}
+      >
+        <AlertDialogContent className="bg-black border border-emerald-500">
+          <AlertDialogHeader>
+            <AlertDialogTitle>Payment Unsuccessful 😩</AlertDialogTitle>
+            <AlertDialogDescription>
+              Something happened and we were unable to start or process your
+              payment. Please try again
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction>Okay</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

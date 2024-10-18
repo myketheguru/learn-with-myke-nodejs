@@ -42,7 +42,7 @@ const InvoicePage = () => {
   const [paystackSuccess, setPaystackSuccess] = useState(false);
   const [paystackFailure, setPaystackFailure] = useState(false);
   const [userHasEnrolled, setUserHasEnrolled] = useState(false);
-  const [cohortData, setCohortData] = useState<any>()
+  const [cohortData, setCohortData] = useState<any>();
 
   const handleAccountSwitch = () => {
     if (typeof window !== "undefined") {
@@ -53,7 +53,7 @@ const InvoicePage = () => {
 
   const handleReload = () => {
     if (typeof window !== "undefined") {
-      window.location.reload()
+      window.location.reload();
     }
   };
 
@@ -105,7 +105,7 @@ const InvoicePage = () => {
       );
 
       const data = res.data.data;
-      setCohortData(data)
+      setCohortData(data);
       if (data !== "No Cohort Found") {
         setUserHasEnrolled(true);
         setLoading(false);
@@ -120,7 +120,7 @@ const InvoicePage = () => {
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setJwtUser(parsedUser);
-          getEnrollment(parsedUser?.id);
+      getEnrollment(parsedUser?.id);
     } else {
       // Get User
       handleAccountSwitch();
@@ -200,20 +200,20 @@ const InvoicePage = () => {
           </div>
           {userHasEnrolled ? (
             <div className="bg-black p-3 w-[99.8%] h-[99%] rounded-[10px]">
-            <div className="flex gap-2 items-center">
-              <div className="rounded-full w-12 h-12 bg-slate-600">
-                
-              </div>
+              <div className="flex gap-2 items-center">
+                <div className="rounded-full w-12 h-12 bg-slate-600"></div>
 
-              <div>
-                <h1 className="text-base font-semibold font-inter capitalize">
-                  Looks like you've enrolled 🎉
-                </h1>
+                <div>
+                  <h1 className="text-base font-semibold font-inter capitalize">
+                    Looks like you&apos;ve enrolled 🎉
+                  </h1>
 
-                <p className="text-xs opacity-50">Please keep an eye on your mailbox for next steps.</p>
+                  <p className="text-xs opacity-50">
+                    Please keep an eye on your mailbox for next steps.
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
           ) : (
             <div className="grid place-items-center bg-g-to-grey rounded-[20px] shadow-lg overflow-hidden w-full">
               <div className="bg-black p-6 w-[99.8%] h-[99.8%] rounded-[20px]">
@@ -370,7 +370,10 @@ const InvoicePage = () => {
 
       <AlertDialog
         open={paystackSuccess}
-        onOpenChange={(open) => {setPaystackSuccess(open); open === false ? handleReload() : null}}
+        onOpenChange={(open) => {
+          setPaystackSuccess(open);
+          open === false ? handleReload() : null;
+        }}
       >
         <AlertDialogContent className="bg-black border-emerald-500">
           <AlertDialogHeader>
@@ -388,7 +391,10 @@ const InvoicePage = () => {
 
       <AlertDialog
         open={paystackFailure}
-        onOpenChange={(open) => {setPaystackFailure(open); open === false ? handleReload() : null}}
+        onOpenChange={(open) => {
+          setPaystackFailure(open);
+          open === false ? handleReload() : null;
+        }}
       >
         <AlertDialogContent className="bg-black border border-emerald-500">
           <AlertDialogHeader>

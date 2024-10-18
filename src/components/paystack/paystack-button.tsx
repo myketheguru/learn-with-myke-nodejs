@@ -4,7 +4,6 @@ import React, { Dispatch, SetStateAction } from "react";
 import { formatNumber } from "@/utils/functions";
 import { User } from "firebase/auth";
 import Script from "next/script";
-import { useRouter } from "next/navigation";
 
 type SuccessResponse = {
   reference: string;
@@ -23,27 +22,18 @@ const PaystackButton = ({
   setPaystackSuccess: Dispatch<SetStateAction<boolean>>;
   setPaystackFailure: Dispatch<SetStateAction<boolean>>;
 }) => {
-    const router = useRouter();
-
-    const handleReload = () => {
-        router.refresh()
-    }
-
   const onSuccess = (response: SuccessResponse) => {
     // Implementation for whatever you want to do with reference and after success call.
     console.log(response);
     // alert("Payment successful! Reference: " + response.reference);
     setPaystackSuccess(true);
-    handleReload()
-};
-
+  };
 
   const onClose = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
     console.log("Payment closed");
     // alert("Payment was not completed.");
     setPaystackFailure(true);
-    handleReload()
   };
 
   const makePayment = () => {

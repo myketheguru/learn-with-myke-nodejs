@@ -24,8 +24,8 @@ import {
 
 const InvoicePage = () => {
   // Get Course ID
-  const courseId = coursesIdMap["nodejs_backend"];
-  //   const courseId = "01fa2e52-2d88-4a10-9560-9b75404f0031"; // Test course
+//   const courseId = coursesIdMap["nodejs_backend"];
+    const courseId = "b7619e26d8d45e514ab117f6c3de037b5e6fb42851fb4258a4374260f64d2885"; // Test course
   const baseUrl = process.env.NEXT_PUBLIC_BACKEND_BASEURL;
 
   const [course, setCourse] = useState<ICourse>();

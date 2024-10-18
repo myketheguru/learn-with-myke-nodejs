@@ -84,10 +84,10 @@ const InvoicePage = () => {
     }
   };
 
-  const getEnrollment = async () => {
+  const getEnrollment = async (userId: string) => {
     setLoading(true)
     try {
-        let res = await axios.get(`${baseUrl}/cohort/cohortDetails/${courseId}/${jwtUser?.id}`, {
+        let res = await axios.get(`${baseUrl}/cohort/cohortDetails/${courseId}/${userId}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("jwt")}`,
             },
@@ -105,6 +105,7 @@ const InvoicePage = () => {
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setJwtUser(parsedUser);
+      getEnrollment(parsedUser?.id)
     } else {
       // Get User
       handleAccountSwitch();
@@ -120,7 +121,6 @@ const InvoicePage = () => {
       setLoading(false);
     }
     fetchCourse();
-    getEnrollment()
   }, []);
 
   //   console.log(course);
